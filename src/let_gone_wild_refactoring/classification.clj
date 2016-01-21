@@ -1,4 +1,4 @@
-(ns let-gone-wild-refactoring.postage-classification)
+(ns let-gone-wild-refactoring.classification)
 
 (defn- big? [{{:keys [height width]} :dimensions}]
   (and (> height 10) (> width 10)))

@@ -1,6 +1,6 @@
-(ns let-gone-wild-refactoring.postage-factors-appliedd-to-weight
+(ns let-gone-wild-refactoring.factors-appliedd-to-weight
   (:require
-    [let-gone-wild-refactoring.postage-classification :as postage-classification]))
+    [let-gone-wild-refactoring.classification :as classification]))
 
 (def ^:private factors-by-postage-type
   {[:big :express] 5
@@ -10,6 +10,6 @@
 
 (defn compute [postage]
   (-> postage
-      postage-classification/classify-postage
+      classification/classify-postage
       :type
       factors-by-postage-type))
