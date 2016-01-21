@@ -6,29 +6,20 @@
 (defn- express? [{:keys [days-to-ship]}]
   (> 2 days-to-ship))
 
-(defn- big-and-express [postage]
-  (assoc postage :type [:big :express]))
-
-(defn- express [postage]
-  (assoc postage :type :express))
-
-(defn- big [postage]
-  (assoc postage :type :big))
-
-(defn- regular [postage]
-  (assoc postage :type :regular))
+(defn with-type [postage type]
+  (assoc postage :type type))
 
 (defn classify [postage]
   (cond
     (and (express? postage)
          (big? postage))
-    (big-and-express postage)
+    (with-type postage [:big :express])
 
     (express? postage)
-    (express postage)
+    (with-type postage :express)
 
     (big? postage)
-    (big postage)
+    (with-type postage :big)
 
     :else
-    (regular postage)))
+    (with-type postage :regular)))
