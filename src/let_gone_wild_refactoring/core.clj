@@ -1,13 +1,14 @@
 (ns let-gone-wild-refactoring.core)
 
-(defn factor [{:keys [dimensions weight days-to-ship]}]
-  (let [{height :height width :width} dimensions
-        big? (and (> height 10) (> width 10))
-        express? (> 2 days-to-ship)
+(defn big? [{{:keys [height width]} :dimensions}]
+  (and (> height 10) (> width 10)))
+
+(defn factor [{:keys [days-to-ship] :as postage}]
+  (let [express? (> 2 days-to-ship)
         factor (cond
-                 (and express? big?) 5
+                 (and express? (big? postage)) 5
                  express? 3
-                 big? 2
+                 (big? postage) 2
                  :else 1)]
     factor))
 
