@@ -9,19 +9,27 @@
 (defn big-and-express [postage]
   (assoc postage :type :big-and-express))
 
+(defn express [postage]
+  (assoc postage :type :express))
+
 (defn classify-postage [postage]
-  (when (and (express? postage) (big? postage))
-    (big-and-express postage)))
+  (cond
+    (and (express? postage) (big? postage))
+    (big-and-express postage)
+
+    (express? postage)
+    (express postage)))
 
 (def factors-by-postage-type
-  {:big-and-express 5})
+  {:big-and-express 5
+   :express         3})
 
 (defn factor [postage]
   (if-let [factor (factors-by-postage-type (:type (classify-postage postage)))]
     factor
     (cond
       (and (express? postage) (big? postage)) (throw (Exception. "should't get here!"))
-      (express? postage) 3
+      (express? postage) (throw (Exception. "should't get here!"))
       (big? postage) 2
       :else 1)))
 
