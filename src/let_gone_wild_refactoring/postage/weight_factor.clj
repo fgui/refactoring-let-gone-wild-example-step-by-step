@@ -11,5 +11,4 @@
 (defn compute [postage]
   (-> postage
       classification/classify
-      :type
       factors-by-postage-type))
