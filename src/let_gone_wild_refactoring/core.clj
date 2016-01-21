@@ -40,8 +40,10 @@
    :regular 1})
 
 (defn factor [postage]
-  (factors-by-postage-type
-    (:type (classify-postage postage))))
+  (-> postage
+      classify-postage
+      :type
+      factors-by-postage-type))
 
 (defn postage-cost [postage]
   (* (factor postage) (:weight postage)))
