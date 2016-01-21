@@ -1,9 +1,9 @@
 (ns let-gone-wild-refactoring.core)
 
-(defn postage-cost [dimensions weight shipping-days]
-  (let [[height width] dimensions
+(defn postage-cost [{:keys [dimensions weight days-to-ship]}]
+  (let [{height :height width :width} dimensions
         big? (and (> height 10) (> width 10))
-        express? (> 2 shipping-days)
+        express? (> 2 days-to-ship)
         multiple (cond
                    (and express? big?) 5
                    express? 3
