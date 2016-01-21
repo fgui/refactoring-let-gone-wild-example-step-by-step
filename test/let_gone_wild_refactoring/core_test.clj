@@ -51,9 +51,9 @@
       {:weight 1
        :days-to-ship 1
        :dimensions {:height 20
-                    :width 15}}) => 5
+                    :width 15}}) => 8
     (postage-cost
       {:weight 3
        :days-to-ship 1
        :dimensions {:height 20
-                    :width 15}}) => 15))
+                    :width 15}}) => 24))
