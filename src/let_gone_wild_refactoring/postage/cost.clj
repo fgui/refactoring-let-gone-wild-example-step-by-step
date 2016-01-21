@@ -2,5 +2,5 @@
   (:require
     [let-gone-wild-refactoring.postage.weight-factor :as weight-factor]))
 
-(defn postage-cost [postage]
+(defn compute [postage]
   (* (weight-factor/compute postage) (:weight postage)))
