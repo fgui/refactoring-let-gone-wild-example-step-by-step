@@ -7,7 +7,7 @@
   (> 2 days-to-ship))
 
 (defn- big-and-express [postage]
-  (assoc postage :type :big-and-express))
+  (assoc postage :type [:big :express]))
 
 (defn- express [postage]
   (assoc postage :type :express))

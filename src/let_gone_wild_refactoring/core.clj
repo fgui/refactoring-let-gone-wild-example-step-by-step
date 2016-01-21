@@ -3,7 +3,7 @@
     [let-gone-wild-refactoring.postage-classification :as postage-classification]))
 
 (def factors-by-postage-type
-  {:big-and-express 5
+  {[:big :express] 5
    :express 3
    :big 2
    :regular 1})
